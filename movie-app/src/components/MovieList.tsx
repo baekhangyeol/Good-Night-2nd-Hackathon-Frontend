@@ -72,11 +72,13 @@ function MovieList() {
                     </select>
                 </label>
             </div>
-            <ul>
-                {movies.length === 0 ? (
-                    <p>No movies found for the selected filters.</p>
-                ) : (
-                    movies.map(movie => (
+            {movies === null ? (
+                <p>Loading...</p>
+            ) : movies.length === 0 ? (
+                <p>No movies found for the selected filters.</p>
+            ) : (
+                <ul>
+                    {movies.map(movie => (
                         <li key={movie.id}>
                             <h2>{movie.title}</h2>
                             <p>Genre: {movie.genre}</p>
@@ -84,9 +86,9 @@ function MovieList() {
                             <p>Released At: {movie.releasedAt}</p>
                             <p>End At: {movie.endAt}</p>
                         </li>
-                    ))
-                )}
-            </ul>
+                    ))}
+                </ul>
+            )}
         </div>
     );
 }
